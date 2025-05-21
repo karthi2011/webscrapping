@@ -1,0 +1,13 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from time import time
+import pandas as py
+driver=webdriver.Chrome()
+driver.maximize_window()
+driver.get("https://irisgst.com/irisperidot/")
+driver.find_element("id","gstinno").send_keys("36ACXPT1400G1ZG")
+driver.find_element("xpath","//button[@class='btn btn-lg btn-success searchgstin']").send_keys(Keys.ENTER)
+genertaed_EInvoices=driver.find_element("xpath","(//p[@class='orange_box'])[1]").text
+enabled_ForEInvoices=driver.find_element("xpath","(//p[@class='orange_box'])[2]").text
+print("Is Generated E-Invoices "+genertaed_EInvoices[-3::].strip())
+print("Is enabled for E-Invoices "+enabled_ForEInvoices[-3::].strip())
